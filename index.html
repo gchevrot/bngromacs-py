@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Bn-gromacs.py by rsquarelabs</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Bn-gromacs.py</h1>
+        <h2>This is a simple python script to automate the molecular dynamics and minimisation protocols with gromacs.</h2>
+        <a href="https://github.com/rsquarelabs/bn-gromacs.py" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
+<a name="welcome-to-rsquarelabs-" class="anchor" href="#welcome-to-rsquarelabs-"><span class="octicon octicon-link"></span></a>Welcome to rsquarelabs .</h3>
+
+<p>bn-gromacs.py is a simple automation script written in python to automate basic minimisations and protein-ligand molecular dynamics by gromacs(<a href="http://www.gromacs.org">http://www.gromacs.org</a>). Current version supports protein-ligand MD only.</p>
+
+<h2>
+<a name="quick-documentation" class="anchor" href="#quick-documentation"><span class="octicon octicon-link"></span></a>Quick Documentation</h2>
+
+<pre><code>Use './bn-gromacs.py -h' to find options
+************************************************************************
+Usage: bn-gromacs.py [options] filename
+
+  --version show program's version number and exit
+-h, --help    show this help message and exit
+-l  , --ligand=    Input a ligand file [*.gro]
+-i  , --itp=       Input a ligand topology file [*.itp]
+-p  , --protein=   Input a protein file (default:protein.pdb)
+-w  , --wdir=      Working Directory of project (default:work)
+-v, --verbose      Loud and Noisy[default]
+-q, --quiet        Be vewwy quit
+************************************************************************
+</code></pre>
+
+<p><strong>Note:</strong> Apply execute permission to bn-gromacs-py.
+<code>($chmod +x bn-gromacs.py)</code></p>
+
+<h3>
+<a name="files-need-for-simulation" class="anchor" href="#files-need-for-simulation"><span class="octicon octicon-link"></span></a>Files need for simulation</h3>
+
+<p>bn-gromacs.py expects 3 input files for the simulation,
+    1. protein in pdb format *.pdb<br>
+    2. ligand in gro format  *.gro [from PRODRG / ATB / evuivalent] [use DRGAPH.GRO from PRODRG]
+    3. ligand topology format in itp format  *.itp [from PRODRG / ATB / equivalent] [use DRGGMX.ITP from PRODRG]
+You may also provide the project name or work directory using <code>-w</code> (with out spaces). </p>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p><code>$./bn-gromacs.py -p files/protein.pdb -l files/ligand.gro -i files/ligand.itp</code>
+or
+<code>$./bngromacs.py -p files/protein.pdb -l files/ligand.gro -i files/ligand.itp -wdir mywork</code>
+This gives input to the script
+1.protein as files/protein.pdb
+2.ligand as files/ligand.gro
+3.liganditp as files/ligand.itp
+4.working dir as "work"(default)</p>
+
+<p>All the outputs will be saved in a work directory called <code>work/</code> by default. If the directory by name work is present already exist, then the script will move it to a backup folder with name <code>BACKUP/</code> </p>
+
+<h3>
+<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Ravi R.T Merugu(<a href="https://github.com/rsquarelabs" class="user-mention">@rsquarelabs</a>)</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>Having trouble using this tool ? Contact <a href="mailto:raviraj@rsquarelabs.org">raviraj@rsquarelabs.org</a> and I’ll help you sort it out.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/rsquarelabs/bn-gromacs.py/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/rsquarelabs/bn-gromacs.py/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/rsquarelabs/bn-gromacs.py"></a> is maintained by <a href="https://github.com/rsquarelabs">rsquarelabs</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
