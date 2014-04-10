@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Bn-gromacs.py : This is a simple python script to automate the molecular dynamics and minimisation protocols with gromacs." />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-    <title>Bn-gromacs.py</title>
+    <title>Bn-gromacs.py by rsquarelabs</title>
   </head>
 
   <body>
+    <header>
+      <div class="inner">
+        <h1>Bn-gromacs.py</h1>
+        <h2>This is a simple python script to automate the molecular dynamics and minimisation protocols with gromacs.</h2>
+        <a href="https://github.com/rsquarelabs/bn-gromacs.py" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/rsquarelabs/bn-gromacs.py">View on GitHub</a>
-
-          <h1 id="project_title">Bn-gromacs.py</h1>
-          <h2 id="project_tagline">This is a simple python script to automate the molecular dynamics and minimisation protocols with gromacs.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/rsquarelabs/bn-gromacs.py/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/rsquarelabs/bn-gromacs.py/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h3>
 <a name="welcome-to-rsquarelabs-" class="anchor" href="#welcome-to-rsquarelabs-"><span class="octicon octicon-link"></span></a>Welcome to rsquarelabs .</h3>
 
 <p>bn-gromacs.py is a simple automation script written in python to perform basic minimisations and protein-ligand molecular dynamics by gromacs(<a href="http://www.gromacs.org">http://www.gromacs.org</a>). Current version supports protein-ligand minimisation only.</p>
@@ -98,7 +95,7 @@ This gives input to the script
 </ol><h3>
 <a name="list-of-steps" class="anchor" href="#list-of-steps"><span class="octicon octicon-link"></span></a>List of steps</h3>
 
-<p>step1 - Creating Protein Topologies - <code>pdb2gmx+" -f "+ wdir+"protein.pdb -o "+wdir+"protein.gro -ignh -p "+ wdir+"topol.top -i "+ wdir+"posre.itp -ff gromos53a6 -water spc &gt;&gt; " + wdir+"step1.log 2&gt;&amp;1"</code><br>
+<p>step1 - Creating Protein Topologies - <code>pdb2gmx+" -f "+ wdir+"protein.pdb -o "+wdir+"protein.gro -ignh -p "+ wdir+"topol.top -i "+ wdir+"posre.itp -ff gromos53a6 -water spc &gt;&gt; " + wdir+"step1.log 2&gt;&amp;1"</code>
 step2 - adding ligand.gro+protein.gro to make system.gro and update topol.top
 step3 - Defining the box - <code>editconf + " -f "+ wdir+"system.gro -o "+ wdir+"newbox.gro -bt cubic -d 1 -c &gt;&gt; " + wdir+"step3.log 2&gt;&amp;1"</code>
 step4 - Solvating the box - <code>genbox + " -cp "+ wdir+"newbox.gro -p "+ wdir+"topol.top -cs spc216.gro -o "+ wdir+"solv.gro &gt;&gt; " +wdir+"step4.log 2&gt;&amp;1"</code>
@@ -129,18 +126,25 @@ step8.log - Minimisation log</p>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
 <p>If you have any trouble using this tool ? Contact me at <a href="mailto:raviraj@rsquarelabs.com">raviraj@rsquarelabs.com</a> and I’ll try to help you in solving it.</p>
-      </section>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/rsquarelabs/bn-gromacs.py/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/rsquarelabs/bn-gromacs.py/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/rsquarelabs/bn-gromacs.py"></a> is maintained by <a href="https://github.com/rsquarelabs">rsquarelabs</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Bn-gromacs.py maintained by <a href="https://github.com/rsquarelabs">rsquarelabs</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
+  
   </body>
 </html>
