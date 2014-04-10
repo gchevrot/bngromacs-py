@@ -2,3 +2,4 @@
 .pydevproject
 BACKUP/
 work/
+.gitignore
