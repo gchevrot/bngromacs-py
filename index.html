@@ -95,29 +95,37 @@ This gives input to the script
 </ol><h3>
 <a name="list-of-steps" class="anchor" href="#list-of-steps"><span class="octicon octicon-link"></span></a>List of steps</h3>
 
-<p>step1 - Creating Protein Topologies - <code>pdb2gmx+" -f "+ wdir+"protein.pdb -o "+wdir+"protein.gro -ignh -p "+ wdir+"topol.top -i "+ wdir+"posre.itp -ff gromos53a6 -water spc &gt;&gt; " + wdir+"step1.log 2&gt;&amp;1"</code>
-step2 - adding ligand.gro+protein.gro to make system.gro and update topol.top
-step3 - Defining the box - <code>editconf + " -f "+ wdir+"system.gro -o "+ wdir+"newbox.gro -bt cubic -d 1 -c &gt;&gt; " + wdir+"step3.log 2&gt;&amp;1"</code>
-step4 - Solvating the box - <code>genbox + " -cp "+ wdir+"newbox.gro -p "+ wdir+"topol.top -cs spc216.gro -o "+ wdir+"solv.gro &gt;&gt; " +wdir+"step4.log 2&gt;&amp;1"</code>
-step5 - Checking the charge of complex - <code>grompp + " -f "+ wdir+"em.mdp -c "+ wdir+"solv.gro -p "+ wdir+"topol.top -o "+wdir+"ions.tpr -po "+wdir+"mdout.mdp &gt; "+wdir+"step5.log 2&gt;&amp;1"</code>
-step6 - Neutralising the complex(if +ve) - <code>genion + " -s "+ wdir+"ions.tpr -o "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -nname CL -nn "+ str(charge) +" -g "+ wdir+"step6.log 2&gt;&amp;1 &lt;&lt; EOF\nSOL\nEOF</code>
-step6 - Neutralising the complex(if -ve) - <code>genion + " -s "+ wdir+"ions.tpr -o "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -pname NA -np "+ str(-charge)+" -g "+ wdir+"step6.log 2&gt;&amp;1 &lt;&lt; EOF\nSOL\nEOF"</code>
-step7 - Preparing for Minimisation - <code>grompp + " -f "+ wdir+"em_real.mdp -c "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -o "+wdir+"em.tpr -po "+wdir+"mdout.mdp -maxwarn 3 &gt; "+wdir+"step7.log 2&gt;&amp;1"</code>
-step8 - Minimisation - <code>mdrun + " -v  -s "+ wdir+"em.tpr -c "+ wdir+"em.gro -o "+ wdir+"em.trr -e "+wdir+"em.edr -x "+wdir+"em.xtc -g "+wdir+"em.log &gt; "+wdir+"step8.log 2&gt;&amp;1"</code></p>
-
-<h3>
+<ul>
+<li>step1 - Creating Protein Topologies - <code>pdb2gmx+" -f "+ wdir+"protein.pdb -o "+wdir+"protein.gro -ignh -p "+ wdir+"topol.top -i "+ wdir+"posre.itp -ff gromos53a6 -water spc &gt;&gt; " + wdir+"step1.log 2&gt;&amp;1"</code>
+</li>
+<li>step2 - adding ligand.gro+protein.gro to make system.gro and update topol.top</li>
+<li>step3 - Defining the box - <code>editconf + " -f "+ wdir+"system.gro -o "+ wdir+"newbox.gro -bt cubic -d 1 -c &gt;&gt; " + wdir+"step3.log 2&gt;&amp;1"</code>
+</li>
+<li>step4 - Solvating the box - <code>genbox + " -cp "+ wdir+"newbox.gro -p "+ wdir+"topol.top -cs spc216.gro -o "+ wdir+"solv.gro &gt;&gt; " +wdir+"step4.log 2&gt;&amp;1"</code>
+</li>
+<li>step5 - Checking the charge of complex - <code>grompp + " -f "+ wdir+"em.mdp -c "+ wdir+"solv.gro -p "+ wdir+"topol.top -o "+wdir+"ions.tpr -po "+wdir+"mdout.mdp &gt; "+wdir+"step5.log 2&gt;&amp;1"</code>
+</li>
+<li>step6 - Neutralising the complex(if +ve) - <code>genion + " -s "+ wdir+"ions.tpr -o "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -nname CL -nn "+ str(charge) +" -g "+ wdir+"step6.log 2&gt;&amp;1 &lt;&lt; EOF\nSOL\nEOF</code>
+</li>
+<li>step6 - Neutralising the complex(if -ve) - <code>genion + " -s "+ wdir+"ions.tpr -o "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -pname NA -np "+ str(-charge)+" -g "+ wdir+"step6.log 2&gt;&amp;1 &lt;&lt; EOF\nSOL\nEOF"</code>
+</li>
+<li>step7 - Preparing for Minimisation - <code>grompp + " -f "+ wdir+"em_real.mdp -c "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -o "+wdir+"em.tpr -po "+wdir+"mdout.mdp -maxwarn 3 &gt; "+wdir+"step7.log 2&gt;&amp;1"</code>
+</li>
+<li>step8 - Minimisation - <code>mdrun + " -v  -s "+ wdir+"em.tpr -c "+ wdir+"em.gro -o "+ wdir+"em.trr -e "+wdir+"em.edr -x "+wdir+"em.xtc -g "+wdir+"em.log &gt; "+wdir+"step8.log 2&gt;&amp;1"</code>
+</li>
+</ul><h3>
 <a name="list-of-log-files-" class="anchor" href="#list-of-log-files-"><span class="octicon octicon-link"></span></a>List of log files :</h3>
 
-<p>step1.log - log file for protein topology generation
-step2.log - Merging ligand protein structure data
-step3.log - Defining the solvent box
-step4.log - Adding sovlent molecules to the box 
-step5.log - Checking the number of ions need to neutralise 
-step6.log - Adding ions to neutralise the complex
-step7.log - Preparing the files for Minimisation
-step8.log - Minimisation log</p>
-
-<h3>
+<ul>
+<li>step1.log - log file for protein topology generation</li>
+<li>step2.log - Merging ligand protein structure data</li>
+<li>step3.log - Defining the solvent box</li>
+<li>step4.log - Adding sovlent molecules to the box </li>
+<li>step5.log - Checking the number of ions need to neutralise </li>
+<li>step6.log - Adding ions to neutralise the complex</li>
+<li>step7.log - Preparing the files for Minimisation</li>
+<li>step8.log - Minimisation log</li>
+</ul><h3>
 <a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
 
 <p>Ravi R.T Merugu(<a href="https://github.com/rsquarelabs" class="user-mention">@rsquarelabs</a>)</p>
