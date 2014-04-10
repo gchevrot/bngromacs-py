@@ -1,4 +1,9 @@
 #!/usr/bin/python
+""" 
+    RAVI RT MERUGU
+    raviraj@rsquarelabs.com
+    28 Jun, 2013
+"""
 from optparse import OptionParser
 import os
 import sys
@@ -10,8 +15,14 @@ import subprocess
 g_prefix='g_'
 
 
+
 #developer var
-version = "1.0a"
+version = "0.9a"
+weburl = "http://www.rsquarelabs.com"
+rEmail = "raviraj@rsquarelabs.com"
+weblink = weburl + "/projects/bngromacs-py/"
+
+
 
 def LicenseInfo(): 
     print """
@@ -20,16 +31,13 @@ def LicenseInfo():
             ***************************************
             Version """+ version +"""
             Author: Ravi Raja T. Merugu
-            raviraja.merugu@gmail.com
-            Copyrights (c) 2013, RSquareLabs Org
-            check out http://www.rsquarelabs.org/works/bngromacs-py/index for more information.
+            raviraj@rsquarelabs.com
+            Copyrights (c) 2013, RSQUARELABS.COM
+            check out """+weblink+""" for more information.
             
               **** CHEERS & HAPPY RESEARCH :) ****
     
-This program is free software; you can redistribute it and/or modify it under 
-the terms of the GNU General Public License as published by the  rsquarelabs.org;
-either version 2 of the License, or (at your option) any later version.Do not remove
-the original authors name & credits in redistributions or modified version.
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the  rsquarelabs.org; either version 2 of the License, or (at your option) any later version.Do not remove the original authors name & credits in redistributions or modified version.
 
     """
 def CheckFile(filename):
@@ -96,9 +104,9 @@ def ExitProgram():
     *****************************************************
     THANKS FOR USING BNGROMACS version"""+ version + """
             DONT FORGET TO CITE bngromacs.py 
-                raviraja.merugu@gmail.com
-            Copyright (c) 2012, rsquarelabs.org
-      Find more info at http://www.rsquarelabs.org/tools/bngromacs.php
+                raviraj@rsquarelabs.com
+            Copyright (c) 2012, """+ weburl +"""
+      Find more info at """ + weblink +"""
     ******************************************************
 """
     sys.exit()
@@ -212,14 +220,12 @@ def PrepareSystem():
     SystemFh = open(system,'wa',0)
 
     #get the last line of protein 
-
     #get the count of Protein and Ligand files 
     CountProteinLines = len(ProteinFh.readlines())
     CountLigandLines = len(LigandFh.readlines())
 
     #print CountProteinLines 
     #print CountLigandLines
-
     #count of the system
     SystemCount= CountProteinLines + CountLigandLines -6
     #print SystemCount
@@ -411,22 +417,32 @@ pbc            = xyz         ; Periodic Boundary Conditions (yes/no)
     print "CHEERS: em_real.mdp SUCCESSFULLY GENERATED :)"
     
 def Minimise():
-    print ">STEP7 : Initiating Procedure to Add Ions & Neutralise the Complex"
-    #grompp -f em_real.mdp -c solv_ions.gro -p topol.top -o em.tpr
-    #mdrun -v -deffnm em
-    grompp = g_prefix+"grompp"
-    mdrun = g_prefix+"mdrun"
-    StepNo = "7"
-    StepName = "Prepare files for Minimisation"
-    #max warn 3 only for now
-    command = grompp + " -f "+ wdir+"em_real.mdp -c "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -o "+wdir+"em.tpr -po "+wdir+"mdout.mdp -maxwarn 3 > "+wdir+"step7.log 2>&1"
-    RunProcess(StepNo, StepName, command)    
-            
-    StepNo = "8"
-    StepName = " Minimisation"
-    #$command="g_mdrun -v -nt ".$nproc." -s ".$path.$tpr." -c ".$path.$out." -o ".$path.$trr." -x ".$path.$xtc ."-g ".$path.$logfile." > ".$path.$clog." 2>&1";
-    command = mdrun + " -v  -s "+ wdir+"em.tpr -c "+ wdir+"em.gro -o "+ wdir+"em.trr -e "+wdir+"em.edr -x "+wdir+"em.xtc -g "+wdir+"em.log > "+wdir+"step8.log 2>&1"
-    RunProcess(StepNo, StepName, command)  
+    
+    print "MESSAGE: "
+    t = raw_input("Did you check your complex !! do you wish to continue: (y/n)");
+    
+    if (t == 'y'):
+        
+        print ">STEP7 : Preparing the files for Minimisation"
+        #grompp -f em_real.mdp -c solv_ions.gro -p topol.top -o em.tpr
+        #mdrun -v -deffnm em
+        grompp = g_prefix+"grompp"
+        mdrun = g_prefix+"mdrun"
+        StepNo = "7"
+        StepName = "Prepare files for Minimisation"
+        #max warn 3 only for now
+        command = grompp + " -f "+ wdir+"em_real.mdp -c "+ wdir+"solv_ions.gro -p "+ wdir+"topol.top -o "+wdir+"em.tpr -po "+wdir+"mdout.mdp -maxwarn 3 > "+wdir+"step7.log 2>&1"
+        RunProcess(StepNo, StepName, command)    
+                
+        StepNo = "8"
+        StepName = " Minimisation"
+        #$command="g_mdrun -v -nt ".$nproc." -s ".$path.$tpr." -c ".$path.$out." -o ".$path.$trr." -x ".$path.$xtc ."-g ".$path.$logfile." > ".$path.$clog." 2>&1";
+        command = mdrun + " -v  -s "+ wdir+"em.tpr -c "+ wdir+"em.gro -o "+ wdir+"em.trr -e "+wdir+"em.edr -x "+wdir+"em.xtc -g "+wdir+"em.log > "+wdir+"step8.log 2>&1"
+        RunProcess(StepNo, StepName, command)  
+    else:
+        print "Exiting on user request "
+        exit()
+        
 
 def Nvt():
     print ">STEP9 : Initiating the Procedure to Equiliberate the System"
@@ -497,8 +513,8 @@ if __name__ == '__main__':
     *****************************************************
     THANKS FOR USING BNGROMACS version"""+ version + """
             DONT FORGET TO CITE bngromacs.py :)
-                raviraja.merugu@gmail.com
-            RSquareLabs (c) 2012, rsquarelabs.org
-Find more info at http://www.rsquarelabs.org/works/bngromacs-py/index
+                raviraj@rsquarelabs.com
+            RSquareLabs (c) 2012, rsquarelabs.com
+Find more info at """+ weblink + """
     ******************************************************
 """

@@ -1,0 +1,44 @@
+************************************
+BioNerd GROMACS AUTOMATION SCRIPT
+Verion 1.0
+raviraj@rsquarelabs.com
+Ravi RT Merugu, rsquarelabs.com
+************************************
+
+Use './bn-gromacs.py -h' to find options
+************************************************************************
+Usage: bn-gromacs.py [options] filename
+
+  --version          show program's version number and exit
+  -h	, --help         show this help message and exit
+  -l  	, --ligand=    Input a ligand file [*.gro]
+  -i  	, --itp=       Input a ligand topology file [*.itp]
+  -p  	, --protein=   Input a protein file (default:protein.pdb)
+  -w  	, --wdir=      Working Directory of project (default:work)
+  -v	, --verbose      Loud and Noisy[default]
+  -q	, --quiet        Be vewwy quit
+************************************************************************
+
+For simulation script needs 3 files from user,
+	1. protein in pdb format		 *.pdb	
+	2. ligand in gro format 		 *.gro [from PRODRG / ATB / evuivalent] [use DRGAPH.GRO from PRODRG]
+	3. ligand topology format in itp format	 *.itp [from PRODRG / ATB / equivalent] [use DRGGMX.ITP from PRODRG]
+
+You may also provide the project name(with out spaces) [This wil be your working directory]
+	
+
+Sample usage:
+	$./bn-gromacs.py -p example_files/protein.pdb -l example_files/ligand.gro -i example_files/ligand.itp
+
+This gives input to the script
+	1.protein as 	example_files/protein.pdb
+	2.ligand as 	example_files/ligand.gro
+	3.liganditp as 	example_files/ligand.itp
+	4.working dir as "work"(default)
+
+You can change the working dir using option "-w" or "--wdir"
+$./bn-gromacs.py -p example_files/protein.pdb -l example_files/ligand.gro -i example_files/ligand.itp -w mywork
+or
+$./bn-gromacs.py -p example_files/protein.pdb -l example_files/ligand.gro -i example_files/ligand.itp -wdir mywork
+
+
